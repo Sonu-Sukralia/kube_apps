@@ -1,1 +1,11 @@
+Install Airflow
+
+helm install airflow apache-airflow/airflow --namespace airflow --create-namespace --debug
+
+kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
+
+helm show values apache-airflow.airflow  > values.yaml
+
+
+nano values.yaml
 
