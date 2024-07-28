@@ -4,16 +4,29 @@ helm install airflow apache-airflow/airflow --namespace airflow --create-namespa
 
 kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
 
-helm show values apache-airflow.airflow  > values.yaml
+helm show values apache-airflow.airflow  > values1.yaml
 
+create file values1.yaml
+{
+fernetKey: OTR4cjhGYUxjcmF5NGwyVDdNS3RBcndId0s3RXZONE8=
+webserverSecretKey: 51e6e05cb80af835b6528e491f59d6d0
+executor: "KubernetesExecutor"
+}
+
+Add the fernetkey and webserversecretkey values in yaml values1.yaml file like :- OTR4cjhGYUxjcmF5NGwyVDdNS3RBcndId0s3RXZONE8=   and 51e6e05cb80af835b6528e491f59d6d0
+To Get FernetKey use for :-
 echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
+
+To get the webserverSecretKey use :- 
 python3 -c 'import secrets; print(secrets.token_hex(16))'
 
-fernetKey: OTR4cjhGYUxjcmF5NGwyVDdNS3RBcndId0s3RXZONE8=
-webserverSecretKey: OTR4cjhGYUxjcmF5NGwyVDdNS3RBcndId0s3RXZONE8=
-executor: "KubernetesExecutor"
+update fernetkey and webserverSecretKey key in value1.yaml file :- 
+helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f value1.yaml
 
 
+For Additional values
+To see the airflow configuration values :- 
+helm show values apache-airflow/airflow > values.yaml
 
 
 nano values.yaml
