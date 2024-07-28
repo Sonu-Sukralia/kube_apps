@@ -6,6 +6,15 @@ kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
 
 helm show values apache-airflow.airflow  > values.yaml
 
+echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
+python3 -c 'import secrets; print(secrets.token_hex(16))'
+
+fernetKey: OTR4cjhGYUxjcmF5NGwyVDdNS3RBcndId0s3RXZONE8=
+webserverSecretKey: OTR4cjhGYUxjcmF5NGwyVDdNS3RBcndId0s3RXZONE8=
+executor: "KubernetesExecutor"
+
+
+
 
 nano values.yaml
 
