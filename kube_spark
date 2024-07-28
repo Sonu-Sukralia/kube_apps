@@ -1,0 +1,12 @@
+spark
+helm repo add bitnami-repo https://charts.bitnami.com/bitnami
+helm install spark-release bitnami-repo/spark
+
+
+for 4 worked
+helm upgrade spark-release bitnami/spark --set worker.replicaCount=4
+
+kubectl port-forward --address 0.0.0.0 pod/spark-release-master-0 30010:8080
+
+
+https://github.com/bitnami/charts/tree/main/bitnami/spark/#installing-the-chart
