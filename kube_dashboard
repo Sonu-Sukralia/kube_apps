@@ -1,5 +1,9 @@
+Install Kubernestes Dashboard
+
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
-(3-310) line is yaml file.
+kubectl proxy
+
+Yaml File :- (8-315) line is yaml file.
 {
 # Copyright 2017 The Kubernetes Authors.
 #
@@ -311,7 +315,6 @@ spec:
 }
 
 
-kubectl proxy
 
 
 kubectl apply -f dashboard-adminuser.yaml
