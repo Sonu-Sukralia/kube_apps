@@ -1,1 +1,16 @@
 kubectl delete namespace stuck in terminating
+
+
+1. kubectl get ns |grep -i terminating
+2. kubectl get apiservice |grep false
+3. kubectl get apiservice |grep -ifalse
+4. kubectl get apiservice
+5. kubectl get apiservice |grep -i False
+v1beta1.metricks.k8s.io                  metrics/metrics-server      False(MissingEndpoints) 
+
+6. kubectl delete apiservice  v1beta1.metricks.k8s.io
+
+apiservice.apiregistration.k8s.io "v1beta1.metricks.k8s.io " deleted.
+
+
+
