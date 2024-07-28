@@ -1,1 +1,10 @@
+Install k9s 
 
+Refrence :- https://snapcraft.io/install/k9s/ubuntu
+
+sudo apt update
+sudo apt install snapd
+sudo snap install k9s
+
+Run :-
+pi@raspberry:~ $ k9s
