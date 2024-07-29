@@ -1,0 +1,10 @@
+
+
+kubectl delete pod <pod_name> --namespace <namespace> --grace-period 0 --force
+
+kubectl delete pod <pod_name> --grace-period=0 --force
+
+
+kubectl get namespace "stucked-namespace" -o json \
+  | tr -d "\n" | sed "s/\"finalizers\": \[[^]]\+\]/\"finalizers\": []/" \
+  | kubectl replace --raw /api/v1/namespaces/stucked-namespace/finalize -f -
