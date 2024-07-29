@@ -23,6 +23,10 @@ python3 -c 'import secrets; print(secrets.token_hex(16))'
 update fernetkey and webserverSecretKey key in value1.yaml file :- 
 helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f value1.yaml
 
+helm install airflow apache-airflow/airflow --namespace airflow --create-namespace --debug
+
+kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
+
 
 For Additional values
 To see the airflow configuration values :- 
@@ -30,4 +34,6 @@ helm show values apache-airflow/airflow > values.yaml
 
 
 nano values.yaml
+
+kubectl rollout restart deployment --namespace airflow
 
