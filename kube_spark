@@ -10,3 +10,7 @@ kubectl port-forward --address 0.0.0.0 pod/spark-release-master-0 30010:8080
 
 
 https://github.com/bitnami/charts/tree/main/bitnami/spark/#installing-the-chart
+
+
+
+helm delete spark-release bitnami-repo/spark
