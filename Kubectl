@@ -8,3 +8,13 @@ kubectl delete pod <pod_name> --grace-period=0 --force
 kubectl get namespace "stucked-namespace" -o json \
   | tr -d "\n" | sed "s/\"finalizers\": \[[^]]\+\]/\"finalizers\": []/" \
   | kubectl replace --raw /api/v1/namespaces/stucked-namespace/finalize -f -
+
+
+https://cloudnativenow.com/features/using-airflow-to-run-spark-on-kubernetes/
+
+
+https://www.freecodecamp.org/news/install-apache-airflow-on-windows-without-docker/
+
+https://medium.com/@madtopcoder/connect-airflow-with-spark-cluster-6d7853e0e297
+
+https://www.restack.io/docs/airflow-knowledge-yaml-example-values-apache
