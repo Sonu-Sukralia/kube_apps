@@ -8,3 +8,46 @@ sudo snap install k9s
 
 Run :-
 pi@raspberry:~ $ k9s
+
+
+
+
+k9s :- https://idroot.us/install-k9s-ubuntu-22-04/
+https://snapcraft.io/install/k9s/raspbian
+sudo apt update
+sudo apt install snapd
+sudo reboot
+sudo snap install snapd
+sudo snap install k9s
+
+-bash: /usr/bin/my-script: cannot execute binary file: Exec format error
+
+https://stackoverflow.com/questions/66970902/getting-the-error-bash-program-cannot-execute-binary-file-exec-format-erro
+sudo apt update
+sudo apt install -y qemu-user-static binfmt-support
+sudo dpkg --add-architecture amd64
+sudo apt update
+sudo apt install libc6:amd64
+
+K3s may be failing to communicate with its K3s API server, so configure Kubectl as follows:
+
+Create a Kubectl config file
+mkdir ~/.kube
+Generate kubeconfig for your clusters
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config && sudo chown $USER ~/.kube/config
+Copy and export the kubeconfig setting
+sudo chmod 600 ~/.kube/config && export KUBECONFIG=~/.kube/config
+
+
+
+
+
+
+
+
+
+
+
+
+
+
