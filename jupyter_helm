@@ -1201,3 +1201,10 @@ helm upgrade --install kayvan-release bitnami/spark --version 8.7.2 --namespace 
 
 
 https://medium.com/@kayvan.sol2/pyspark-jupyter-notebooks-deployed-on-kubernetes-9141b33dbd3b
+
+
+
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+helm search repo bitnami
+$ helm install kayvan-release bitnami/spark --version 8.7.2
+
