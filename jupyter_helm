@@ -1,3 +1,31 @@
+Refrence :- https://medium.com/@kayvan.sol2/pyspark-jupyter-notebooks-deployed-on-kubernetes-9141b33dbd3b
+
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+helm search repo bitnami
+$ helm install kayvan-release bitnami/spark --version 8.7.2
+
+helm show values bitnami/spark  > values11.yaml
+{ create values2.yaml :- helm upgrade --install kayvan-release bitnami/spark --namespace default --create-namespace -f values2.yaml
+  resourcesPreset: "small"
+  ## @param worker.resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)
+  ## Example:
+  resources:
+     requests:
+       cpu: 1
+       memory: 512Mi
+     limits:
+       cpu: 2
+       memory: 512Mi
+}
+
+helm upgrade --install kayvan-release bitnami/spark --namespace default --create-namespace -f values2.yaml
+or
+helm upgrade --install kayvan-release bitnami/spark --version 8.7.2 --namespace default --create-namespace -f values1.yaml
+
+kubectl port-forward --namespace default svc/kayvan-release-spark-master-svc 80:80
+
+
+
 # Copyright Broadcom, Inc. All Rights Reserved.
 # SPDX-License-Identifier: APACHE-2.0
 
@@ -1202,11 +1230,11 @@ helm upgrade --install kayvan-release bitnami/spark --version 8.7.2 --namespace 
 
 https://medium.com/@kayvan.sol2/pyspark-jupyter-notebooks-deployed-on-kubernetes-9141b33dbd3b
 
-
-
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm search repo bitnami
 $ helm install kayvan-release bitnami/spark --version 8.7.2
 
 https://github.com/arunsrajan/tutorial/blob/main/sparkminio/commands.txt
 
+
+Arun git :- https://github.com/arunsrajan/tutorial/blob/main/sparkminio/commands.txt
