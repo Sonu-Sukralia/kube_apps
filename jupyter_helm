@@ -2,7 +2,7 @@ Refrence :- https://medium.com/@kayvan.sol2/pyspark-jupyter-notebooks-deployed-o
 
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm search repo bitnami
-$ helm install kayvan-release bitnami/spark --version 8.7.2
+$ helm install kayvan-release bitnami/spark --version 8.7.2  ## has 3+3 Gb ram for each worker node so use below upgrade yaml file
 
 helm show values bitnami/spark  > values11.yaml
 { create values2.yaml :- helm upgrade --install kayvan-release bitnami/spark --namespace default --create-namespace -f values2.yaml
@@ -23,6 +23,14 @@ or
 helm upgrade --install kayvan-release bitnami/spark --version 8.7.2 --namespace default --create-namespace -f values1.yaml
 
 kubectl port-forward --namespace default svc/kayvan-release-spark-master-svc 80:80
+
+Spark driver use k9s for port forward :- http://localhost:8081/
+
+Jupyter use k9s for port forward :- http://localhost:8888/lab/tree/work/Untitled.ipynb
+
+
+
+
 
 
 
