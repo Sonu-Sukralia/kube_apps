@@ -1,0 +1,17 @@
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+
+./spark-submit --deploy-mode cluster --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark --conf spark.kubernetes.container.image.pullPolicy=Always --conf spark.hadoop.fs.s3a.path.style.access=True --conf spark.hadoop.fs.s3a.access.key=l9clBhS80ZudADoDQnSS --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem --conf spark.hadoop.fs.s3a.secret.key=5mU3bwzCDejg8aR3qgqwK0eVEsk8gUyxW0p0Cz6h --conf spark.hadoop.fs.s3a.path.style.access=True --conf spark.hadoop.fs.s3a.connection.ssl.enabled=False --conf spark.hadoop.fs.s3a.endpoint=http://s3a-hl.s3a:9000 --conf spark.kubernetes.container.image=sonusukralia/spark:1.1 --conf spark.master=k8s://https://127.0.0.1:6443 local:///app/main1.py
+
+
+
+add spark path
+export PATH=$PATH:/usr/local/spark-3.5.2-bin-hadoop3/bin
+export PATH=$PATH:/usr/bin/java
+export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-arm64
+
+
+
+
+
+
