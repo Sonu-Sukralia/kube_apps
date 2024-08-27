@@ -2,6 +2,9 @@ spark
 helm repo add bitnami-repo https://charts.bitnami.com/bitnami
 helm install spark-release bitnami-repo/spark
 
+helm upgrade --install spark-release bitnami-repo/spark --namespace default -f vspark111.yaml
+helm uninstall spark-release bitnami-repo/spark --namespace default
+
 
 for 4 worked
 helm upgrade spark-release bitnami/spark --set worker.replicaCount=4
